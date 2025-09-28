@@ -1,4 +1,4 @@
-# WUT - A Lightweight Multiplexing WebTransport Proxy Protocol
+# LABUBU - A Lightweight Multiplexing WebTransport Proxy Protocol
 
 Version 1.0 - written by [@jargdev](https://github.com/jargdev)
 
@@ -6,7 +6,7 @@ Inspired by [Wisp](https://github.com/MercuryWorkshop/wisp-protocol)
 
 ## About
 
-WUT is a low-overhead, simple-to-implement protocol, where multiple UDP/QUIC streams can be proxied over a single WebTransport session.  Wisp's concepts are expanded upon by WUT, which is tailored for WebTransport and makes use of its low-latency, dependable and unreliable datagram streams. WUT has strong error handling and is easier to use than alternatives.
+LABUBU is a low-overhead, simple-to-implement protocol, where multiple UDP/QUIC streams can be proxied over a single WebTransport session.  Wisp's concepts are expanded upon by LABUBU, which is tailored for WebTransport and makes use of its low-latency, dependable and unreliable datagram streams. LABUBU has strong error handling and is easier to use than alternatives.
 
 ## Packet format
 
@@ -38,7 +38,7 @@ All packets follow this format. Data types are **little-endian**.
 * The server validates the destination; if invalid, it sends a CLOSE packet.
 * Upon successful validation, the server establishes a UDP socket or QUIC connection to the destination.
 
-> **Note:** Unlike Wisp, there is no TCP option. WUT is strictly UDP/QUIC.
+> **Note:** Unlike Wisp, there is no TCP option. LABUBU is strictly UDP/QUIC.
 
 ---
 
@@ -56,7 +56,7 @@ All packets follow this format. Data types are **little-endian**.
 * Incoming UDP data is packaged in DATA packets and sent to the client.
 * Optional: DATA packets can be marked as **reliable** or **unreliable** using a header bit in the future.
 
-> **Note:** WebTransport datagrams can be unreliable; WUT does not implement a TCP-style buffer, unlike Wisp.
+> **Note:** WebTransport datagrams can be unreliable; LABUBU does not implement a TCP-style buffer, unlike Wisp.
 
 ---
 
@@ -85,7 +85,7 @@ All packets follow this format. Data types are **little-endian**.
 
 ## WebTransport Behavior
 
-* All WUT traffic is multiplexed over a single WebTransport session.
+* All LABUBU traffic is multiplexed over a single WebTransport session.
 * The client initiates a WebTransport session using standard HTTP/3 handshake.
 * Each UDP stream corresponds to a **unidirectional or bidirectional WebTransport stream**.
 * Reliable messages can use **WebTransport streams**, while low-latency, unreliable messages use **WebTransport datagrams**.
